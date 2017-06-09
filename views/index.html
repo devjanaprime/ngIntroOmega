@@ -9,8 +9,12 @@
   </head>
   <body ng-app='myApp'>
     <h1>NG Launchpad</h1>
-    <div ng-controller='AngularIntro'>
-      <input type='number' ng-model='userInput'/>{{ userInput*2 }}
+    <div ng-controller='AngularIntro as ai'>
+      <input type='number' ng-model='ai.userInput'/>
+      <button ng-click="ai.testClick()">Test Click</button>
+      <p>
+        {{ ai.output }}
+      </p>
     </div>
   </body>
 </html>

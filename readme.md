@@ -30,3 +30,47 @@ myApp.controller( 'AngularIntro', function(){
 ```
   <input type='text' ng-model='userInput'/>{{ userInput }}
 ```
+
+NG Intro ver 0.2
+===
+
+- modify your controller statement to use controller as syntax:
+```
+  <div ng-controller='AngularIntro as ai'>
+```
+
+- update your controller to use "vm" as "this":
+```
+myApp.controller( 'AngularIntro', function(){
+  var vm = this;
+```
+
+- from now on we'll refer to this controller as "vm" in the javascript and "ai" in html
+
+- next create a click function in your controller:
+```
+vm.testClick = function(){
+  console.log( 'You typed:', vm.userInput );
+}
+```
+
+- bind that click to a button on the html and update the input model to reference the controller:
+```
+  <input type='number' ng-model='ai.userInput'/>
+  <button ng-click="ai.testClick()">Test Click</button>
+```
+- test in browser
+- next, let's get some of that on the DOM
+- add an expression for our output in the HTML:
+```
+<p>
+  {{ ai.output }}
+</p>
+```
+- create an vm.output and set it's value in the clientside js and add to your click function:
+```
+vm.testClick = function(){
+  vm.output = 'You typed: '+ vm.userInput;
+  console.log( 'You typed:', vm.userInput );
+}
+``` 
