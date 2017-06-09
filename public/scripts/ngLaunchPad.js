@@ -8,10 +8,18 @@ var myApp = angular.module( 'myApp', [] );
 myApp.controller( 'AngularIntro', function(){
   var vm = this;
 
+  vm.showFront = false;
+
   vm.testClick = function(){
     vm.output = 'You typed: '+ vm.userInput;
     console.log( 'You typed:', vm.userInput );
-  }
+  }; // end testClick
+
+  vm.toggleShow = function(){
+    // invert boolean value
+    vm.showFront = !vm.showFront;
+  }; // end toggleShow
+
 }); //end AngularIntro controller
 /****************
 after creating the module and controller, these must be connected to html
