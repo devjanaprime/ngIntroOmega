@@ -16,7 +16,7 @@
       <input type='number' ng-model='ai.costIn' placeholder="cost"/>
       <button ng-click="ai.addCar()">Add Car</button>
       <p ng-repeat='car in ai.cars'>
-        {{ car.year }} {{ car.make }} {{ car.model }} ${{ car.cost }}
+        {{ car.year }} {{ car.make }} {{ car.model }} ${{ car.cost }} <button ng-click='ai.removeCar($index)'>Remove</button>
       </p>
       <h2 ng-show='ai.showFront' ng-click='ai.toggleShow()'>Front</h2>
       <h2 ng-hide='ai.showFront' ng-click='ai.toggleShow()'>Back</h2>

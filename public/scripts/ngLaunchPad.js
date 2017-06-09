@@ -28,6 +28,11 @@ myApp.controller( 'AngularIntro', function(){
     console.log( vm.cars );
   }; //end addCar
 
+  vm.removeCar = function( index){
+    console.log( 'in removeCar:', index );
+    vm.cars.splice( index, 1 );
+  }; //end removeCar
+
   vm.testClick = function(){
     vm.output = 'You typed: '+ vm.userInput;
     console.log( 'You typed:', vm.userInput );

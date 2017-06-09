@@ -156,3 +156,43 @@ vm.addCar = function(){
   {{ car.year }} {{ car.make }} {{ car.model }} ${{ car.cost }}
 </p>
 ```
+
+NG Intro ver 0.5
+===
+- let's add a "remove" button for each car
+- first, let's append a button to the DOM for each car that calls a function in the controller:
+```
+<p ng-repeat='car in ai.cars'>
+  {{ car.year }} {{ car.make }} {{ car.model }} ${{ car.cost }} <button ng-click='ai.removeCar()'>Remove</button>
+</p>
+```
+- now let's hook that up to an actual function in the js:
+```
+vm.removeCar = function(){
+  console.log( 'in removeCar' );
+}; //end removeCar
+```
+- test in browser. Each car should have a "remove" button that, when pressed, will log out "in remove car" in the browser console
+- next, we'll need to know the index of the car in the array. For instance, we'll want "0" when the first car is clicked, "1" for the second, etc...
+- update your ng-repeat to include $index as shown:
+```
+<p ng-repeat='car in ai.cars'>
+  {{ car.year }} {{ car.make }} {{ car.model }} ${{ car.cost }} <button ng-click='ai.removeCar($index)'>Remove</button>
+</p>
+```
+- $index is given to us by ng-repeat and is the index in the current array of the object being shown. n this case, the index of the car in ai.cars
+- next, update your js to accept this passed argument. For now, let's just log it out to make sure we are getting what we expect:
+```
+vm.removeCar = function( index){
+  console.log( 'in removeCar:', index );
+}; //end removeCar
+```
+- test in browser. Add a few cars. You should now see "in removeCar: 0" when clicking the button next to the first car, "in removeCar: 1" for the second, etc...
+- now that we've got the index of the car we want to remove, we can use our usual JS array built-ins to remove this object from the array:
+```
+vm.removeCar = function( index){
+  console.log( 'in removeCar:', index );
+  vm.cars.splice( index, 1 );
+}; //end removeCar
+```
+- this will remove one object from the vm.cars array at the given index
