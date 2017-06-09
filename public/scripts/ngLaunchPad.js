@@ -9,6 +9,24 @@ myApp.controller( 'AngularIntro', function(){
   var vm = this;
 
   vm.showFront = false;
+  // our cars array, two way bound via controller
+  vm.cars = [];
+
+  vm.addCar = function(){
+    console.log( 'in vm.addCar' );
+    // get user input
+    // place into a new object
+    var newCar = {
+      cost: vm.costIn,
+      make: vm.makeIn,
+      model: vm.modelIn,
+      year: vm.yearIn
+    }; //end newCar
+    console.log( 'new car:', newCar );
+    // push into an array
+    vm.cars.push( newCar );
+    console.log( vm.cars );
+  }; //end addCar
 
   vm.testClick = function(){
     vm.output = 'You typed: '+ vm.userInput;

@@ -104,3 +104,55 @@ vm.toggleShow = function(){
 <h2 ng-hide='ai.showFront' ng-click='ai.toggleShow()'>Back</h2>
 ```
 - test in browser
+
+NG Intro ver 0.4
+===
+
+- update your input form to have the necessary fields
+- also include a button to add the new object
+```
+<input type='number' ng-model='ai.yearIn' placeholder="year"/>
+<input type='text' ng-model='ai.makeIn' placeholder="make"/>
+<input type='text' ng-model='ai.modelIn' placeholder="model"/>
+<input type='number' ng-model='ai.costIn' placeholder="cost"/>
+<button ng-click="ai.addCar()">Add Car</button>
+```
+
+- bind a function in your js to the button via the controller:
+```
+vm.addCar = function(){
+  console.log( 'in vm.addCar' );
+}; //end addCar
+```
+- test in browser. Currently you'll only see the console log when the button is clicked
+- add a variable that is an array to your controller. This is where we'll push the new objects once we get the user input through a button click:
+```
+vm.cars = [];
+```
+
+- update the function to take the input, create an object, and push it into the array:
+```
+vm.addCar = function(){
+  console.log( 'in vm.addCar' );
+  // get user input
+  // place into a new object
+  var newCar = {
+    cost: vm.costIn,
+    make: vm.makeIn,
+    model: vm.modelIn,
+    year: vm.yearIn
+  }; //end newCar
+  console.log( 'new car:', newCar );
+  // push into an array
+  vm.cars.push( newCar );
+  console.log( vm.cars );
+}; //end addCar
+```
+
+- now that the data is in the array vm.cars, we can use ng-repeat to display the data on the DOM as ai.cars
+- update your html as follows:
+```
+<p ng-repeat='car in ai.cars'>
+  {{ car.year }} {{ car.make }} {{ car.model }} ${{ car.cost }}
+</p>
+```
