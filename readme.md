@@ -1,3 +1,6 @@
+Note: Each version has it's own branch
+---
+
 NG Intro ver 0.1
 ===
 
